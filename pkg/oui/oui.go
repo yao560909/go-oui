@@ -1,11 +1,14 @@
 package oui
 
 import (
+	"embed" // 新增引入embed包
 	"encoding/csv"
 	"errors"
-	"os"
 	"strings"
 )
+
+//go:embed oui.csv
+var embeddedFS embed.FS
 
 // OUI 表示OUI数据库中的一条记录
 type OUI struct {
@@ -29,14 +32,14 @@ func NewDatabase() *Database {
 
 // Load 从CSV文件加载数据到Database（自动跳过标题行）
 func (db *Database) Load() error {
-    // 修改为项目根目录的相对路径
-    file, err := os.Open("internal/data/oui.csv")
-    if err != nil {
-        return err
-    }
-    defer file.Close()
+	// 从嵌入文件系统读取文件内容
+	data, err := embeddedFS.ReadFile("oui.csv")
+	if err != nil {
+		return err
+	}
 
-	reader := csv.NewReader(file)
+	// 将文件内容转换为字符串读取器
+	reader := csv.NewReader(strings.NewReader(string(data)))
 	records, err := reader.ReadAll()
 	if err != nil {
 		return err
