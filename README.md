@@ -50,7 +50,8 @@ Provides a `GET` API to look up the organization information associated with a M
 
 - **Endpoint**:  
   [`https://mac-lookup-ezhpqkhdyz.cn-beijing.fcapp.run/api/oui/search?mac=D4E3C5FF491E`](https://mac-lookup-ezhpqkhdyz.cn-beijing.fcapp.run/api/oui/search?mac=D4E3C5FF491E)
-
+- **Endpoint**:  
+  [`http://47.94.171.89/api/oui/search?mac=D4E3C5FF491E`](http://47.94.171.89/api/oui/search?mac=D4E3C5FF491E)
 - **Method**:  
   `GET`
 - **Request Headers**:
@@ -75,3 +76,9 @@ Provides a `GET` API to look up the organization information associated with a M
     "msg": "Success"
 }
 ```
+## Web Lookup Page
+A simple web page is also provided for querying MAC OUI information directly:
+
+URL: http://47.94.171.89/
+
+You can enter the MAC address in the input field and view the result in your browser.
