@@ -43,3 +43,35 @@ func main() {
     fmt.Println("Manufacturer:", result.Organization)
 }
 ```
+## API Documentation
+
+### Query MAC Address Information
+Provides a `GET` API to look up the organization information associated with a MAC address.
+
+- **Endpoint**:  
+  [`https://mac-lookup-ezhpqkhdyz.cn-beijing.fcapp.run/api/oui/search?mac=D4E3C5FF491E`](https://mac-lookup-ezhpqkhdyz.cn-beijing.fcapp.run/api/oui/search?mac=D4E3C5FF491E)
+
+- **Method**:  
+  `GET`
+- **Request Headers**:
+    - `Content-Type: application/json`
+
+- **Query Parameters**:
+    - `mac` (required): The MAC address to query. Supports colon-separated, hyphen-separated, or plain 12-character hexadecimal format.
+
+- **Response Examples**:
+
+#### Success (HTTP 200)
+
+```json
+{
+    "code": 200,
+    "data": {
+        "registry": "MA-L",
+        "assignment": "D4E3C5",
+        "organization": "zte corporation",
+        "address": "12/F.,zte R&D building ,kejinan Road,Shenzhen,P.R.China shenzhen  guangdong CN 518057 "
+    },
+    "msg": "Success"
+}
+```
